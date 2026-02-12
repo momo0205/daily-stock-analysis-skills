@@ -17,9 +17,14 @@ Use the project’s built-in decision dashboard schema and prompt to produce a s
    - Ensure `context['today']`, `context['realtime']`, `context['chip']`, and `context['trend_analysis']` are present when available.
    - If `context['data_missing'] == True`, the output must explicitly state data gaps and avoid invented numbers.
 
-2. **Generate dashboard JSON**
-   - Use `GeminiAnalyzer.SYSTEM_PROMPT` and `_format_prompt()` in `src/analyzer.py`.
-   - Output **strict JSON** following the schema in the prompt (dashboard.core_conclusion, data_perspective, intelligence, battle_plan).
+2. **Generate dashboard JSON (no external AI key)**
+   - **Do not call external LLM APIs** when API keys are not configured.
+   - Manually compose the dashboard JSON using:
+     - `TrendAnalysisResult` (trend_status, bias, volume_status, macd/rsi signals)
+     - realtime quote (price/turnover/volume_ratio) if available
+     - chip distribution if available
+     - intel/news summary if available
+   - Output **strict JSON** following the schema in `src/analyzer.py` (dashboard.core_conclusion, data_perspective, intelligence, battle_plan).
    - Must include: one-sentence conclusion, specific buy/stop/target prices, and checklist with ✅/⚠️/❌.
 
 3. **Parse/validate output**

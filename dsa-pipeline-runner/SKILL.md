@@ -9,7 +9,7 @@ description: Run or modify the end-to-end analysis pipeline for daily_stock_anal
 用于执行完整分析流水线（数据获取→趋势分析→情报搜索→LLM仪表盘→推送），并支持并发/报告类型等配置。
 
 ## Overview
-Run the full stock analysis pipeline (data fetch → trend analysis → news intel → LLM dashboard → notification) using `StockAnalysisPipeline` in `src/core/pipeline.py`.
+Run the full stock analysis pipeline (data fetch → trend analysis → news intel → dashboard → notification) using `StockAnalysisPipeline` in `src/core/pipeline.py`. When no external AI key is configured, **do not invoke LLM APIs**; generate dashboards manually from trend + data + intel.
 
 ## Quick run
 - Instantiate `StockAnalysisPipeline()`.

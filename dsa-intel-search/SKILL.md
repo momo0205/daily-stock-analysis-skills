@@ -14,6 +14,7 @@ Use `SearchService` to gather recent news, risk alerts, and earnings/industry in
 ## Workflow
 1. **Initialize SearchService**
    - Use `SearchService(bocha_keys, tavily_keys, serpapi_keys)` from `src/search_service.py`.
+   - Tavily key: set `TAVILY_API_KEYS` in `.env`.
    - Check `is_available` before searching.
 
 2. **Run multi-dimensional search**
